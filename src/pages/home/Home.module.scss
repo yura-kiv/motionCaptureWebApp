@@ -1,0 +1,67 @@
+.wrapper {
+  position: relative;
+}
+
+.title {
+  font-weight: 600;
+  font-size: x-large;
+  line-height: 32px;
+  margin-bottom: 32px;
+}
+
+.content {
+  display: flex;
+  gap: 32px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: x-large;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.sliderWrapper {
+  width: 35vw;
+
+  .sliderContainer {
+    .slider {
+      border-radius: 10px;
+      margin-bottom: 24px;
+
+      .slide {
+        height: 35vh;
+
+        .img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .buttons {
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+      gap: 16px;
+
+      .counter {
+      }
+    }
+  }
+}
+
+.text {
+  font-size: medium;
+  line-height: 20px;
+}
+
+.additional {
+  padding-top: 32px;
+
+  .buttons {
+    display: flex;
+    gap: 16px;
+  }
+}

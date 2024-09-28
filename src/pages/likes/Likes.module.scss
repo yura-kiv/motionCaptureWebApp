@@ -1,0 +1,29 @@
+.wrapper {
+  position: relative;
+}
+
+.title {
+  font-weight: 600;
+  font-size: x-large;
+  line-height: 32px;
+  margin-bottom: 32px;
+}
+
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.empty {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .text {
+    font-size: large;
+  }
+}

@@ -1,0 +1,137 @@
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sideBar {
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  border-right: 1px solid #898989;
+  width: 240px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f2;
+  transition: width 0.2s;
+
+  &.mini {
+    width: 82px;
+
+    .header {
+      justify-content: center;
+
+      .title {
+        display: none;
+      }
+    }
+
+    .links {
+      .link {
+        justify-content: center;
+
+        .label {
+          display: none;
+        }
+      }
+    }
+
+    .close {
+      svg {
+        rotate: -90deg;
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: large;
+    padding: 24px 16px;
+    border-bottom: 1px solid #898989;
+
+    .logo {
+      svg {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    .title {
+      white-space: nowrap;
+    }
+  }
+
+  .links {
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      font-size: medium;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #badfe7;
+      }
+
+      &.active {
+        background: #6fb3b8;
+        color: #fff;
+
+        .icon {
+          svg {
+            path {
+              stroke: #fff;
+            }
+          }
+        }
+      }
+
+      .icon {
+        svg {
+          path {
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+  }
+
+  .close {
+    cursor: pointer;
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    top: 75vh;
+    left: 100%;
+    transform: translate(-50%);
+    border: 1px solid #898989;
+    transition: background 0.2s, scale 0.2s;
+
+    &:hover {
+      background: #badfe7;
+    }
+
+    svg {
+      height: 16px;
+      width: 16px;
+      rotate: 90deg;
+    }
+  }
+}
+
+.rightSide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex-grow: 1;
+    width: 100%;
+    padding: 32px;
+  }
+}

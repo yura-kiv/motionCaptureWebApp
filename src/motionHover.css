@@ -1,0 +1,26 @@
+.post {
+  scale: 1.03;
+}
+
+.postImg img {
+  scale: 1.1;
+}
+
+.button {
+  scale: 1.1;
+}
+
+.sideBarLink {
+  scale: 1.1;
+  background: #badfe7;
+}
+
+.sideBarToggle {
+  scale: 1.1;
+}
+
+.categoryFilter {
+  border: none;
+  scale: 1.1;
+  background: #badfe7;
+}

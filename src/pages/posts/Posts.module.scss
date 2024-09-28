@@ -1,0 +1,35 @@
+.wrapper {
+  position: relative;
+}
+
+.title {
+  font-weight: 600;
+  font-size: x-large;
+  line-height: 32px;
+  margin-bottom: 32px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: x-large;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.text {
+  width: 70%;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.filter {
+  margin-bottom: 24px;
+}
+
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}

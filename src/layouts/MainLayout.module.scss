@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.camera {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 2px;
+  background: #fff;
+  border: 1px solid #898989;
+}
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fpsCounter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  background: #fff;
+  z-index: 1;
+}

@@ -1,0 +1,47 @@
+.wrapper {
+  position: relative;
+  width: 360px;
+
+  .imgWrapper {
+    padding: 4px;
+    border: 1px solid #898989;
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    margin-bottom: 16px;
+
+    .img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: scale 0.2s;
+    }
+  }
+
+  .content {
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .category {
+    color: rgb(98, 98, 98);
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.buttons {
+  margin-top: 12px;
+  display: flex;
+  justify-content: end;
+}
