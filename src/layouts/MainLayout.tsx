@@ -10,11 +10,11 @@ import { getScrollEvent } from "../functions/getScrollEvent";
 import { getBrowserEvent } from "../functions/getBrowserEvent";
 import { HoverNode, Nodes } from "../types/nodes";
 import { NodesContext } from "../contexts/nodesContext";
+import { ModalFrame } from "../components/ModalFrame/ModalFrame";
+import { getDocumentFps } from "../functions/getDocumentFps";
 import Webcam from "react-webcam";
 import s from "./MainLayout.module.scss";
 import SideBar from "../components/SideBar/SideBar";
-import { ModalFrame } from "../components/ModalFrame/ModalFrame";
-import { getDocumentFps } from "../functions/getDocumentFps";
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -56,6 +56,7 @@ const MainLayout = () => {
     if (fpsCounterRef) getDocumentFps(fpsCounterRef);
     const hands = new Hands({
       locateFile: (file) => {
+        // return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
         return `/hands/${file}`;
       },
     });
