@@ -3,14 +3,14 @@ import s from "./SideBar.module.scss";
 import { FC, ReactElement, useContext } from "react";
 import { pages } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import {
-  getSideBarIsMini,
-  setSideBarIsMini,
-} from "../../redux/slices/sideBarSlice";
 import { NodesContext } from "../../contexts/nodesContext";
 import ArrowBottom from "../../assets/svgs/ArrowBottom";
 import Logo from "../../assets/svgs/Logo";
 import Footer from "../Footer/Footer";
+import {
+  getSideBarIsMini,
+  setSideBarIsMini,
+} from "../../redux/slices/sideBarSlice";
 
 type SideBarProps = {
   children: ReactElement;
