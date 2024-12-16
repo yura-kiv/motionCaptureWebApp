@@ -1,16 +1,16 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import s from "./SideBar.module.scss";
-import { FC, ReactElement, useContext } from "react";
-import { pages } from "../../constants";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { NodesContext } from "../../contexts/nodesContext";
-import ArrowBottom from "../../assets/svgs/ArrowBottom";
-import Logo from "../../assets/svgs/Logo";
-import Footer from "../Footer/Footer";
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import s from './SideBar.module.scss';
+import { FC, ReactElement, useContext } from 'react';
+import { pages } from '../../constants';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { NodesContext } from '../../contexts/nodesContext';
+import ArrowBottom from '../../assets/svgs/ArrowBottom';
+import Logo from '../../assets/svgs/Logo';
+import Footer from '../Footer/Footer';
 import {
   getSideBarIsMini,
   setSideBarIsMini,
-} from "../../redux/slices/sideBarSlice";
+} from '../../redux/slices/sideBarSlice';
 
 type SideBarProps = {
   children: ReactElement;
@@ -42,7 +42,7 @@ const SideBar: FC<SideBarProps> = () => {
                 addHoverNode({
                   id: `sideBar_${p.url}`,
                   ref,
-                  hoverClassName: "sideBarLink",
+                  hoverClassName: 'sideBarLink',
                 })
               }
             >
@@ -58,7 +58,7 @@ const SideBar: FC<SideBarProps> = () => {
             addHoverNode({
               id: `sideBar_isMiniToggle`,
               ref,
-              hoverClassName: "sideBarToggle",
+              hoverClassName: 'sideBarToggle',
             })
           }
         >

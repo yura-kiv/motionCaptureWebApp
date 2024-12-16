@@ -1,13 +1,13 @@
-import React, { ReactNode, FC, useContext, useEffect, useRef } from "react";
-import s from "./Button.module.scss";
-import { NodesContext } from "../../contexts/nodesContext";
+import React, { ReactNode, FC, useContext, useEffect, useRef } from 'react';
+import s from './Button.module.scss';
+import { NodesContext } from '../../contexts/nodesContext';
 
 type ButtonProps = {
   id: string;
   text?: string;
-  size?: "sm" | "lg";
+  size?: 'sm' | 'lg';
   icon?: ReactNode;
-  category?: "primary" | "secondary" | "outline";
+  category?: 'primary' | 'secondary' | 'outline';
   isDisabled?: boolean;
   addClassName?: string;
   onClick?: (
@@ -21,15 +21,14 @@ type ButtonProps = {
 const Button: FC<ButtonProps> = ({
   id,
   text,
-  size = "lg",
+  size = 'lg',
   addClassName,
-  category = "primary",
+  category = 'primary',
   icon,
   isDisabled,
   onClick,
 }) => {
   const hoverId = `${id}_button`;
-  const ref = useRef<HTMLButtonElement>(null);
   const { addHoverNode, removeHoverNode } = useContext(NodesContext);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const Button: FC<ButtonProps> = ({
         addHoverNode({
           id: hoverId,
           ref,
-          hoverClassName: "button",
+          hoverClassName: 'button',
         })
       }
       className={`${s.button} ${s[size]} ${s[category]} ${

@@ -1,20 +1,20 @@
-import { useCallback, useEffect, useRef } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Hands, Results } from "@mediapipe/hands";
-import { Camera } from "@mediapipe/camera_utils";
-import { detectHands } from "../functions/detectHands";
-import { detectHoverEffects } from "../functions/detectHoverEffects";
-import { detectGesture } from "../functions/detectGesture";
-import { detectClickEvent } from "../functions/detectClickEvent";
-import { getScrollEvent } from "../functions/getScrollEvent";
-import { getBrowserEvent } from "../functions/getBrowserEvent";
-import { HoverNode, Nodes } from "../types/nodes";
-import { NodesContext } from "../contexts/nodesContext";
-import { ModalFrame } from "../components/ModalFrame/ModalFrame";
-import { getDocumentFps } from "../functions/getDocumentFps";
-import Webcam from "react-webcam";
-import s from "./MainLayout.module.scss";
-import SideBar from "../components/SideBar/SideBar";
+import Webcam from 'react-webcam';
+import { Camera as _Camera } from '@mediapipe/camera_utils';
+import { Hands as _Hands, Results } from '@mediapipe/hands';
+import { useCallback, useEffect, useRef } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { detectHands } from '../functions/detectHands';
+import { detectHoverEffects } from '../functions/detectHoverEffects';
+import { detectGesture } from '../functions/detectGesture';
+import { detectClickEvent } from '../functions/detectClickEvent';
+import { getScrollEvent } from '../functions/getScrollEvent';
+import { getBrowserEvent } from '../functions/getBrowserEvent';
+import { HoverNode, Nodes } from '../types/nodes';
+import { NodesContext } from '../contexts/nodesContext';
+import { ModalFrame } from '../components/ModalFrame/ModalFrame';
+import { getDocumentFps } from '../functions/getDocumentFps';
+import s from './MainLayout.module.scss';
+import SideBar from '../components/SideBar/SideBar';
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -33,30 +33,31 @@ const MainLayout = () => {
 
   const onResults = useCallback((results: Results) => {
     if (canvasRef.current) {
-      const canvasContext = canvasRef.current.getContext("2d")!;
+      const canvasContext = canvasRef.current.getContext('2d')!;
       const landmarks = detectHands(canvasContext, results);
       if (landmarks) {
         const gesture = detectGesture(landmarks.worldLandmarks);
-        if (gesture === "CURSOR") {
+        if (gesture === 'CURSOR') {
           detectHoverEffects(landmarks.displayLandmarks, nodes.current.hover);
           detectClickEvent(
             landmarks.displayLandmarks,
             landmarks.worldLandmarks
           );
         }
-        if (gesture === "VICTORY")
+        if (gesture === 'VICTORY')
           getBrowserEvent(landmarks.displayLandmarks, navigate);
-        if (gesture === "OPEN_PALM") getScrollEvent("up");
-        if (gesture === "CLOSED_PALM") getScrollEvent("down");
+        if (gesture === 'OPEN_PALM') getScrollEvent('up');
+        if (gesture === 'CLOSED_PALM') getScrollEvent('down');
       }
     }
   }, []);
 
   useEffect(() => {
     if (fpsCounterRef) getDocumentFps(fpsCounterRef);
+    // @ts-ignore
+    const Hands = _Hands || window.Hands;
     const hands = new Hands({
       locateFile: (file) => {
-        // return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
         return `/hands/${file}`;
       },
     });
@@ -69,6 +70,8 @@ const MainLayout = () => {
     });
     hands.onResults(onResults);
     if (cameraRef.current && cameraRef.current.video) {
+      // @ts-ignore
+      const Camera = _Camera || window.Camera;
       const camera = new Camera(cameraRef.current.video, {
         width: 256,
         height: 144,
@@ -98,7 +101,7 @@ const MainLayout = () => {
         videoConstraints={{
           width: 1280,
           height: 720,
-          facingMode: "user",
+          facingMode: 'user',
         }}
       />
       <canvas

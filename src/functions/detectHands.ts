@@ -1,13 +1,24 @@
-import { drawConnectors, drawLandmarks, lerp } from "@mediapipe/drawing_utils";
-import { getIsClick } from "./helpers";
 import {
-  HAND_CONNECTIONS,
+  drawConnectors as _drawConnectors,
+  drawLandmarks as _drawLandmarks,
+  lerp as _lerp,
+} from '@mediapipe/drawing_utils';
+import {
+  HAND_CONNECTIONS as _HAND_CONNECTIONS,
   NormalizedLandmarkList,
   Results,
-} from "@mediapipe/hands";
+} from '@mediapipe/hands';
+import { getIsClick } from './helpers';
 
 let previousDisplayLandmarks: NormalizedLandmarkList = [];
 let previousWorldLandmarks: NormalizedLandmarkList = [];
+
+// @ts-ignore
+const drawConnectors = _drawConnectors || window.drawConnectors;
+// @ts-ignore
+const drawLandmarks = _drawLandmarks || window.drawLandmarks;
+// @ts-ignore
+const HAND_CONNECTIONS = _HAND_CONNECTIONS || window.HAND_CONNECTIONS;
 
 export const detectHands = (
   context: CanvasRenderingContext2D,
@@ -46,11 +57,11 @@ export const detectHands = (
     drawClickLandmark(context, smoothDisplayLandmarks[8], isClick);
     drawClickLandmark(context, smoothDisplayLandmarks[4], isClick);
     drawConnectors(context, smoothDisplayLandmarks, HAND_CONNECTIONS, {
-      color: "blue",
+      color: 'blue',
       lineWidth: 2,
     });
     drawLandmarks(context, smoothDisplayLandmarks, {
-      color: "yellow",
+      color: 'yellow',
       lineWidth: 1,
       radius: 2,
     });
@@ -70,6 +81,8 @@ const getSmoothLandmarks = (
   min: number,
   max: number
 ): NormalizedLandmarkList => {
+  // @ts-ignore
+  const lerp = _lerp || window.lerp;
   if (prev.length === 0) prev = landmarks;
   const smoothLandmarks = landmarks.map((landmark, i) => {
     const previousLandmark = prev[i];
@@ -88,7 +101,7 @@ const drawClickLandmark = (
   isClick: boolean
 ) => {
   const { x, y } = landmark;
-  const color = isClick ? "green" : "red";
+  const color = isClick ? 'green' : 'red';
   context.beginPath();
   context.arc(
     x * context.canvas.width,
